@@ -8,8 +8,54 @@
 import SwiftUI
 
 struct GenreSelectionView: View {
+    @State var isShowingQuizView = false
+    @State var selectionQuizData: [QuizItem] = []
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Button {
+                selectionQuizData = QuizData.knowledgeQuestions
+                isShowingQuizView = true
+            } label: {
+                Text("世界の国知識クイズ")
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .font(.title.bold())
+                    .background(.systemMint)
+                    .foregroundStyle(.black)
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
+            }
+            Button {
+                selectionQuizData = QuizData.nationalFragQuestions
+                isShowingQuizView = true
+            } label: {
+                Text("国旗クイズ")
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .font(.title.bold())
+                    .background(.systemMint)
+                    .foregroundStyle(.black)
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
+            }
+            Button {
+                selectionQuizData = QuizData.capitalQuestions
+                isShowingQuizView = true
+            } label: {
+                Text("世界の首都クイズ")
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .font(.title.bold())
+                    .background(.systemMint)
+                    .foregroundStyle(.black)
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
+            }
+        }
+        .padding()
+        .frame(maxHeight: .infinity) //独自に追加
+        .backgroundImage()
+        .fullScreenCover(isPresented: $isShowingQuizView) {
+            QuizView(quizItems: $selectionQuizData)
+        }
     }
 }
 

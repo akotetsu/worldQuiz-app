@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct StartView: View {
-    @State var isShowingQuizView = false
+    //@State var isShowingQuizView = false
+    @State var isShowingGenreSelectionView = false
     
     var body: some View {
         VStack {
@@ -19,15 +20,15 @@ struct StartView: View {
                 .stroke(color: .black, width: 5)
             Spacer()
             Button {
-                isShowingQuizView = true
+                isShowingGenreSelectionView = true
             } label: {
                 Text("スタート")
-                    .font(.system(size: 50))
+                    .font(.system(size: 70))
                     .foregroundStyle(.red)
                     .stroke(color: .black)
             }
-            .fullScreenCover(isPresented: $isShowingQuizView) {
-                QuizView()
+            .fullScreenCover(isPresented: $isShowingGenreSelectionView) {
+                GenreSelectionView()
             }
         }
         .padding()

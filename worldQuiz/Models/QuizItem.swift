@@ -7,12 +7,9 @@
 
 import SwiftUI
 
-struct QuizItem: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
-
-#Preview {
-    QuizItem()
+struct QuizItem {
+    let question: String
+    var questionImage: Image? = nil
+    var choices: [String]
+    let correctAnswer: String
 }
